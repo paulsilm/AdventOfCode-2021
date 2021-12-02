@@ -1,1 +1,3 @@
 *.pyc
+input/
+__pycache__/
