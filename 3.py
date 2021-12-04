@@ -2,6 +2,15 @@ import helper
 import numpy as np
 from statistics import multimode
 
+def task1():
+  ns = helper.get_int_input_for_file("3")
+  l = len(ns)
+  binlist = np.array([toDigits(n) for n in ns])
+  sums = binlist.transpose().sum(1).tolist()
+  g = toInt([1 if a > (l // 2) else 0 for a in sums])
+  h = toInt([1 if a < (l // 2) else 0 for a in sums])
+  print(g*h)
+
 def task2():
   ns = helper.get_int_input_for_file("3")
   binmatrix = np.array([toDigits(n) for n in ns])
@@ -20,15 +29,6 @@ def calculateRating(matrix, thing=0):
     matrix = matrix[temp == m] # filter stuff
     if len(matrix) == 1:
       return toInt(matrix[0])
-
-def task1():
-  ns = helper.get_int_input_for_file("3")
-  l = len(ns)
-  binlist = np.array([toDigits(n) for n in ns])
-  sums = binlist.transpose().sum(1).tolist()
-  g = toInt([1 if a > (l // 2) else 0 for a in sums])
-  h = toInt([1 if a < (l // 2) else 0 for a in sums])
-  print(g*h)
 
 def toDigits(d:int):
   return np.array([(d // 10**(11-i)) % 10 for i in range(12)])
